@@ -5,11 +5,10 @@
 
 #import PySimpleGUI as sg
 from time import sleep as s
-from typing import Any, NoReturn
 from webbrowser import open as open_window
-
-from bs4 import BeautifulSoup as bs
 from requests import get
+from tqdm import trange
+from bs4 import BeautifulSoup as bs
 
 
 def profile_search(username: str) -> bool | None:
@@ -23,28 +22,32 @@ def profile_search(username: str) -> bool | None:
     :return: Opens found profile picture in user's default browser as a new window, or as a new tab if there is already a window open.
     :rtype: Any
     """
-    if username is not None:
-        try:
-            url = f'https://github.com/{username}'
-            gh_profile = get(url)
-            #:NOTE - #* "content" represents all data contained within an html response.
-            soup = bs(gh_profile.content, 'html.parser')
-            #:NOTE - #? Finds info by inspecting profile picture element in my browser.
-            profile_img: str = soup.find('img', {'alt': 'Avatar'})['src']
 
-            #:NOTE - #!Open found prof-pic in browser:
-            print("\nOk!\n")
-            return open_window(profile_img)
+    try:
+        url = f'https://github.com/{username}'
+        gh_profile = get(url)
+        #:NOTE - #* "content" represents all data contained within an html response.
+        soup = bs(gh_profile.content, 'html.parser')
+        #:NOTE - #? Finds info by inspecting profile picture element in my browser.
+        profile_img: str = soup.find('img', {'alt': 'Avatar'})['src']
 
-    #& Raise exception if username can't be found, or is invalid.
-        except TypeError:
-            print(
-                f'\n\t~   ERROR   ~\nUnable to find user "{username}" profile.\n\nPlease try again.\n'
-            )
-            s(1.2)
+        #:NOTE - #!Open found prof-pic in browser:
+        print(
+            f'\nOpening {username}\'s Github profile picture: "{profile_img}"\n'
+        )
+        for _ in trange(50):
+            s(0.01)
+        print("\nOk!\n")
+        return open_window(profile_img, 2)
+
+    except TypeError:
+        print(
+            f'\n\t~   ERROR   ~\nUnable to find user "{username}" profile.\n\nPlease try again.\n'
+        )
+        s(1.2)
 
 
-def main() -> NoReturn:
+def main():
     """
     Program function wrapper.
 

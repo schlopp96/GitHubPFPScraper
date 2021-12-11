@@ -16,3 +16,9 @@
 5. To exit, you may enter "exit" at any time while prompted for input.
 
 ---
+
+## Credits
+
+- Uploaded as a personal rendition of one of the following tutorials contained in the following video uploaded by [freecodecamp.org](http://freecodecamp.org/):
+  - <https://youtu.be/SqvVm3QiQVk?t=37>
+    - Listed as first project in video description, titled "Web Scraping Project".
