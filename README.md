@@ -4,14 +4,6 @@
 
 ---
 
-- Initialized Repository.
-- Created README.md.
-- Created .gitignore
-
-- Uploaded as a personal project thanks to following tutorial by <http://freecodecamp.org/>:
-  - <https://youtu.be/SqvVm3QiQVk?t=37>
-    - Listed as first project in video description, titled "Web Scraping Project".
-
 ## How Does it Work?
 
 ---
