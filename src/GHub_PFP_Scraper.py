@@ -7,11 +7,11 @@
 from time import sleep as s
 from webbrowser import open as open_window
 from requests import get
-from tqdm import trange
+from loadingSequence import load
 from bs4 import BeautifulSoup as bs
 
 
-def profile_search(username: str) -> bool | None:
+def profile_search(username: str) -> bool:
     """
     Small script that opens the profile-picture of the entered Github username within your default browser.
 
@@ -32,12 +32,9 @@ def profile_search(username: str) -> bool | None:
         profile_img: str = soup.find('img', {'alt': 'Avatar'})['src']
 
         #:NOTE - #!Open found prof-pic in browser:
-        print(
-            f'\nOpening {username}\'s Github profile picture: "{profile_img}"\n'
+        load(
+            f'\nOpening {username}\'s Github profile picture: "{profile_img}"', 'Ok!\n'
         )
-        for _ in trange(50):
-            s(0.01)
-        print("\nOk!\n")
         return open_window(profile_img, 2)
 
     except TypeError:
@@ -45,6 +42,7 @@ def profile_search(username: str) -> bool | None:
             f'\n\t~   ERROR   ~\nUnable to find user "{username}" profile.\n\nPlease try again.\n'
         )
         s(1.2)
+        return False
 
 
 def main():
