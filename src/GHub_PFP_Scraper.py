@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup as bs
 
 def profile_search(username: str) -> bool:
     """
-    Small script that opens the profile-picture of the entered Github username within your default browser.
+    Finds and opens the profile-picture of the entered Github username within your default browser.
 
     - If there is already a browser window opened, the image will be loaded as a new tab within the window.
 
@@ -33,8 +33,8 @@ def profile_search(username: str) -> bool:
 
         #:NOTE - #!Open found prof-pic in browser:
         load(
-            f'\nOpening {username}\'s Github profile picture: "{profile_img}"', 'Ok!\n'
-        )
+            f'\nOpening {username}\'s Github profile picture: "{profile_img}"',
+            'Ok!\n')
         return open_window(profile_img, 2)
 
     except TypeError:
@@ -49,7 +49,7 @@ def main():
     """
     Program function wrapper.
 
-    - NOT MEANT TO BE CALLED MANUALLY!schlopp
+    # - NOT MEANT TO BE CALLED MANUALLY!
     - Enter "exit" to close program when prompted for username.
     - Prints "how-to-exit" reminders every 3rd entry.
 
