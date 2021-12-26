@@ -17,10 +17,10 @@ def profile_search(username: str) -> bool:
 
     - If there is already a browser window opened, the image will be loaded as a new tab within the window.
 
-    :param username: username of the GitHub profile to search for.
+    :param username: username of GitHub profile.
     :type username: str
     :return: Opens found profile picture in user's default browser as a new window, or as a new tab if there is already a window open.
-    :rtype: Any
+    :rtype: bool
     """
 
     try:
@@ -49,7 +49,7 @@ def main():
     """
     Program function wrapper.
 
-    # - NOT MEANT TO BE CALLED MANUALLY!
+    ### NOT MEANT TO BE CALLED MANUALLY!
     - Enter "exit" to close program when prompted for username.
     - Prints "how-to-exit" reminders every 3rd entry.
 

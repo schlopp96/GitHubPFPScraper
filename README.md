@@ -4,7 +4,7 @@
 
 ---
 
-## How Does it Work?
+## Usage
 
 ---
 
