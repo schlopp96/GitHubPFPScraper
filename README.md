@@ -1,6 +1,6 @@
-# GitHub PFP Scraper Project
+# GitHub Profile Picture Scraper
 
-> v1.0.0 Initial Release
+> v3.0.0 README
 
 ---
 
